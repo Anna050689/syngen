@@ -3,13 +3,29 @@ import copy
 
 
 class Context:
+    """
+    A class to manage configuration context using a dictionary.
+    """
     def __init__(self):
+        """
+        Initializes a new instance of the Context class with an empty configuration.
+        """
         self.config = {}
 
     def set_config(self, value: Dict):
+        """
+        Sets the configuration dictionary to a deep copy of the provided value.
+
+        :param value: A dictionary containing configuration settings.
+        """
         self.config = copy.deepcopy(value)
 
     def get_config(self) -> Dict:
+        """
+        Retrieves the current configuration dictionary.
+
+        :return: A dictionary containing the current configuration settings.
+        """
         return self.config
 
 
@@ -18,6 +34,11 @@ _config_instance: Context = None
 
 
 def get_context() -> Context:
+    """
+    Retrieves the singleton instance of the Context class.
+
+    :return: The singleton instance of the Context class.
+    """
     global _config_instance
     if _config_instance is None:
         _config_instance = Context()
@@ -25,5 +46,10 @@ def get_context() -> Context:
 
 
 def global_context(metadata: Dict):
+    """
+    Sets the global configuration context using the provided metadata.
+
+    :param metadata: A dictionary containing global configuration settings.
+    """
     global_config = get_context()
     global_config.set_config(metadata)
