@@ -25,5 +25,15 @@ def get_context() -> Context:
 
 
 def global_context(metadata: Dict):
+    """
+    Set the global configuration context using the provided metadata.
+
+    This function ensures that only one instance of the configuration context exists
+    by employing a singleton pattern. The provided metadata dictionary contains the
+    configuration settings to be applied globally.
+
+    Args:
+        metadata (Dict): A dictionary containing configuration settings.
+    """
     global_config = get_context()
     global_config.set_config(metadata)
