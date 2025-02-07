@@ -18,6 +18,17 @@ _config_instance: Context = None
 
 
 def get_context() -> Context:
+    """
+    Retrieve the singleton instance of the Context class.
+
+    This function ensures that only one instance of the Context
+    class is created and used throughout the application.
+
+    Returns
+    -------
+    Context
+        The singleton instance of the Context class.
+    """
     global _config_instance
     if _config_instance is None:
         _config_instance = Context()
