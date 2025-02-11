@@ -198,6 +198,16 @@ class Validator:
             self.errors["check completion of the training process"][table_name] = error_message
 
     def _check_merged_metadata(self, parent_table: str):
+        """
+        Check if the metadata for the specified parent table exists in the merged metadata.
+
+        Args:
+            parent_table (str): The name of the parent table to check in the merged metadata.
+
+        Raises:
+            ValidationError: If the metadata for the parent table is not found in the merged metadata,
+                             an error message is logged and a ValidationError is raised.
+        """
         if parent_table not in self.merged_metadata:
             message = (
                 f"The metadata of the parent table - '{parent_table}' hasn't been found. "
